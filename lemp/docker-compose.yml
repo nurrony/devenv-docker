@@ -1,0 +1,46 @@
+version: '2'
+services:
+  nginx:
+    image: evild/alpine-nginx:1.9.15-libressl
+    container_name: lemp_nginx
+    restart: always
+    links:
+      - php
+    volumes:
+      - /nmrony/docker/lemp/nginx/html:/var/www/html/:ro
+      - /nmrony/docker/lemp/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /nmrony/docker/lemp/nginx/conf.d:/etc/nginx/conf.d:ro
+    ports:
+      - 80:80
+      - 443:443
+  php:
+    image: yavin/alpine-php-fpm
+    container_name: lemp_php
+    restart: always
+    volumes:
+      - /nmrony/docker/lemp/nginx/html:/var/www/html
+    depends_on:
+      - db
+    links:
+      - db
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: lemp_pma
+    restart: always
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - PMA_HOST=lemp_mariadb
+  db:
+    image: mariadb:latest
+    container_name: lemp_mariadb
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=nmrony
+volumes:
+  db-data:
+    driver: local
