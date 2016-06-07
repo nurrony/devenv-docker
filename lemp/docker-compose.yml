@@ -32,7 +32,9 @@ services:
     links:
       - db
     environment:
-      - PMA_HOST=lemp_mariadb
+      - DB_HOST=lemp_mariadb
+      - DB_USER=root
+      - DB_PASSWORD=nmrony
   db:
     image: mariadb:latest
     container_name: lemp_mariadb
