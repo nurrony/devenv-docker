@@ -19,3 +19,9 @@ $docker-machine ssh devbox
 #In Docker Machine (workzone path in host is /media/devzone/workzone)
 $sudo mkdir /nmrony && sudo mount -t vboxsf workzone /nmrony
 ```
+Creating Containers
+-------------------
+- To start LEMP Stack run the following commnad
+```
+docker-compose up -d
+```
