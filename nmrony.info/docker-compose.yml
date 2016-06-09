@@ -1,0 +1,20 @@
+version: '2'
+services:
+  nmrony_blog:
+    image: mhart/alpine-node:4.4.5
+    command: sh -c "npm start"
+    container_name: blog_nmrony_info
+    working_dir: /nmrony.info
+    ports:
+      - 2368:2368
+    networks:
+      - ronsvpn_proxy
+      - ronsvpn_backend
+    volumes:
+      - /nmrony/ghost-blogs/nmrony.info:/nmrony.info
+
+networks:
+  ronsvpn_proxy:
+    external: true
+  ronsvpn_backend:
+    external: true
