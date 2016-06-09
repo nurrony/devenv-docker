@@ -4,8 +4,8 @@ services:
     image: evild/alpine-nginx:1.9.15-libressl
     container_name: lemp_nginx
     restart: always
-    links:
-      - php
+    networks:
+      - ronsvpn_proxy
     volumes:
       - /nmrony/docker/lemp/nginx/html:/var/www/html/:ro
       - /nmrony/docker/lemp/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
@@ -13,36 +13,53 @@ services:
     ports:
       - 80:80
       - 443:443
+
   php:
     image: yavin/alpine-php-fpm
     container_name: lemp_php
     restart: always
+    networks:
+      - ronsvpn_proxy
+      - ronsvpn_backend
     volumes:
       - /nmrony/docker/lemp/nginx/html:/var/www/html
     depends_on:
-      - db
-    links:
-      - db
+      - mariadb
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: lemp_pma
     restart: always
+    networks:
+      - ronsvpn_proxy
+      - ronsvpn_backend
     depends_on:
-      - db
-    links:
-      - db
+      - mariadb
     environment:
-      - DB_HOST=lemp_mariadb
+      - PMA_HOST=lemp_mariadb
       - DB_USER=root
       - DB_PASSWORD=nmrony
-  db:
+    ports:
+      - 8080:80
+
+  mariadb:
     image: mariadb:latest
     container_name: lemp_mariadb
     restart: always
+    networks:
+      - ronsvpn_backend
+      - ronsvpn_proxy
     volumes:
-      - db-data:/var/lib/mysql
+      - mariadb-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=nmrony
+
 volumes:
-  db-data:
+  mariadb-data:
     driver: local
+
+networks:
+  ronsvpn_backend:
+    external: true
+  ronsvpn_proxy:
+    external: true
