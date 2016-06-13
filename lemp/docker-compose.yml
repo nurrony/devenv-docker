@@ -37,8 +37,6 @@ services:
       - mariadb
     environment:
       - PMA_HOST=lemp_mariadb
-      - DB_USER=root
-      - DB_PASSWORD=nmrony
     ports:
       - 8080:80
 
@@ -50,7 +48,7 @@ services:
       - ronsvpn_backend
       - ronsvpn_proxy
     volumes:
-      - /media/devzone/workzone/backup/mysql:/var/lib/mysql
+      - /media/devzone/www/storage/mysql/:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=nmrony
 
