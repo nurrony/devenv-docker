@@ -48,7 +48,7 @@ services:
       - ronsvpn_backend
       - ronsvpn_proxy
     volumes:
-      - /media/devzone/www/storage/mysql/:/var/lib/mysql
+      - /media/devzone/developments/storage/mysql/:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=nmrony
 
