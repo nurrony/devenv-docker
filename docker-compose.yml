@@ -8,6 +8,8 @@ services:
     extends:
       file: ./nginx/docker-compose.yml
       service: nginx
+    environment:
+      - VIRTUAL_HOST=experiments.nmrony.docker,nmrony.docker,itc-blog.nmrony.docker
   php:
     extends:
       file: ./nginx/docker-compose.yml

@@ -13,22 +13,37 @@
 
 # Default server configuration
 #
-
-upstream lemp_pma_container {
-  server lemp_pma:80;
-}
+#upstream container_php {
+#  server php:9000;
+#}
 
 server {
-  listen 80;
-  server_name pma.nmrony.docker;
-  location / {
-    proxy_pass                          http://lemp_pma_container;
-    proxy_set_header  Host              $http_host;   # required for docker client's sake
-    proxy_set_header  X-Real-IP         $remote_addr; # pass on real client's IP
-    proxy_set_header  X-Forwarded-For   $proxy_add_x_forwarded_for;
-    proxy_set_header  X-Forwarded-Proto $scheme;
-    proxy_read_timeout                  900;
-  }
+    listen 80;
+    root /usr/share/nginx/html/itc-blog;
+    index index.php index.html index.htm;
+
+    server_name itc-blog.nmrony.docker;
+
+    location / {
+        autoindex on;
+        try_files $uri $uri/ =404;
+    }
+
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/html;
+    }
+
+    location ~ \.php$ {
+        try_files $uri /index.php =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include /etc/nginx/fastcgi.conf;
+        fastcgi_intercept_errors on;
+    }
 }
 
 
