@@ -21,7 +21,7 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server ipv6only=on;
 
-    root /var/www/html/nmrony.docker;
+    root /usr/share/nginx/html/nmrony.docker;
     index index.php index.html index.htm;
 
     server_name nmrony.docker;
@@ -43,7 +43,7 @@ server {
         fastcgi_pass php:9000;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include /etc/nginx/conf/fastcgi.conf;
+        include /etc/nginx/fastcgi.conf;
         fastcgi_intercept_errors on;
     }
 }

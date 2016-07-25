@@ -19,7 +19,7 @@
 
 server {
     listen 80;
-    root /var/www/html/experiments.nmrony.docker;
+    root /usr/share/nginx/html/experiments.nmrony.docker;
     index index.php index.html index.htm;
 
     server_name experiments.nmrony.docker;
@@ -41,7 +41,7 @@ server {
         fastcgi_pass php:9000;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi.conf;
+        include /etc/nginx/fastcgi.conf;
         fastcgi_intercept_errors on;
     }
 }
