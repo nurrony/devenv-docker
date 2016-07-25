@@ -2,6 +2,8 @@ Development using Docker
 ========================
 This repository contains all my `docker`, docker-machine, docker-compose related settings and configuration files
 
+> ###If you do not like too much chit-chat just jump to [Start Containers](#start-containers) section
+
 Creating Machine
 ----------------
 > If you are not using docker-machine you can skip this section
@@ -29,7 +31,7 @@ $docker network create ronsvpn_proxy
 $docker network create ronsvpn_backend
 ```
 
-Creating Containers
+Start Containers
 -------------------
 - To start LEMP Stack run the following commnad
 ```
