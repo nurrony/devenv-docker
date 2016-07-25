@@ -1,0 +1,19 @@
+pma:
+  image: phpmyadmin/phpmyadmin
+  container_name: pma
+  restart: always
+  ports:
+    - 8080:80
+  links:
+    - mariadb
+  environment:
+    - VIRTUAL_HOST=pma.nmrony.docker
+    - PMA_HOSTS=mariadb,test_mariadb
+mariadb:
+  image: k0st/alpine-mariadb
+  container_name: mariadb
+  restart: always
+  volumes:
+    - /media/devzone/projects/storage/mysql-common:/var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=nmrony
