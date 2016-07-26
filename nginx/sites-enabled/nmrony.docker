@@ -13,16 +13,18 @@
 
 # Default server configuration
 #
-#upstream container_php {
-#  server php:9000;
-#}
+# upstream container_php {
+#   server php:9000;
+# }
 
 server {
-    listen 80;
-    root /usr/share/nginx/html/experiments.nmrony.local;
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /usr/share/nginx/html/nmrony.docker;
     index index.php index.html index.htm;
 
-    server_name experiments.nmrony.local;
+    server_name nmrony.docker;
 
     location / {
         autoindex on;

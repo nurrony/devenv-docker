@@ -9,7 +9,7 @@ services:
       file: ./nginx/docker-compose.yml
       service: nginx
     environment:
-      - VIRTUAL_HOST=experiments.nmrony.local,nmrony.local,itc-blog.nmrony.local
+      - VIRTUAL_HOST=experiments.nmrony.docker,nmrony.docker,itc-blog.nmrony.docker
   php:
     extends:
       file: ./nginx/docker-compose.yml
@@ -21,7 +21,7 @@ services:
     ports:
       - 8080:80
     environment:
-      - VIRTUAL_HOST=pma.nmrony.local
+      - VIRTUAL_HOST=pma.nmrony.docker
       - PMA_HOSTS=mysql-dev,test_mariadb
   mysql-dev:
     extends:
