@@ -22,7 +22,7 @@ server {
     root /usr/share/nginx/html/itc-blog;
     index index.php index.html index.htm;
 
-    server_name itc-blog.nmrony.docker;
+    server_name itc-blog.nmrony.local;
 
     location / {
         autoindex on;

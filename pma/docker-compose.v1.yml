@@ -14,6 +14,6 @@ mariadb:
   container_name: mariadb
   restart: always
   volumes:
-    - /media/devzone/projects/storage/mysql-common:/var/lib/mysql
+    - ${HOME}/storage/mysql-common:/var/lib/mysql
   environment:
     - MYSQL_ROOT_PASSWORD=nmrony
