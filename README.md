@@ -21,6 +21,7 @@ $docker-machine ssh devbox
 #In Docker Machine (workzone path in host is /media/devzone/workzone)
 $sudo mkdir /nmrony && sudo mount -t vboxsf workzone /nmrony
 ```
+
 Creating VPN Networks
 ---------------------
 All configurations are depends on two custom vpn network `ronsvpn_backend` and `ronsvpn_proxy`. Create these VPNs as
@@ -30,10 +31,17 @@ follows
 $docker network create ronsvpn_proxy
 $docker network create ronsvpn_backend
 ```
+Setting configuration path
+---------------------------
+Copy and paste the following line in your `~/.bashrc` or `~/.zshrc` depending your shell. 
+Then replace `absolute-path-to-configuration-directory` with yours
+```sh
+export DEV_ZONE='absolute-path-to-configuration-directory'
+```
 
 Start Containers
 -------------------
-- To start LEMP Stack run the following commnad
+After setting the configuration path just run the following command to start LEMP Stack
 ```
 docker-compose up -d
 ```
