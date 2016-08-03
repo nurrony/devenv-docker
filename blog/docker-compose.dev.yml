@@ -1,7 +1,7 @@
 version: '2'
 services:
-  nmrony_blog:
+  nmrony-blog:
     image: zzrot/alpine-ghost
-    container_name: blog_nmrony_info
+    container_name: nmrony-blog
     ports:
       - 2368:2368
