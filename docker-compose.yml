@@ -31,3 +31,15 @@ services:
       - ${DEV_ZONE}/storage/mysql-common:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=nmrony
+  nmrony_blog:
+    depends_on:
+      - mysql-dev
+      - pma
+    extends:
+      file: ./blog/docker-compose.dev.yml
+      service: nmrony_blog
+    volumes:
+      - ${DEV_ZONE}/projects/open-source/nmrony.info:/var/lib/ghost
+    environment:
+      - VIRTUAL_HOST=blog.nmrony.docker
+      - DEV_DOMAIN=http://blog.nmrony.docker
