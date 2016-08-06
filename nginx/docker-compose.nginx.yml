@@ -1,0 +1,21 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ${DEV_ZONE}/projects:/usr/share/nginx/html
+      - ${DEV_ZONE}/nginx/sites-enabled:/etc/nginx/sites-enabled:ro
+      - ${DEV_ZONE}/nginx/sites-available:/etc/nginx/sites-available:ro
+      - ${DEV_ZONE}/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  php:
+    image: yavin/alpine-php-fpm
+    container_name: php
+    restart: always
+    volumes:
+      - ${DEV_ZONE}/projects:/usr/share/nginx/html:ro
+    ports:
+      - 9000:9000
