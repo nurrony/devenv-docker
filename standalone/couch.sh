@@ -14,6 +14,7 @@ couchdb(){
     -p 2049:2049
     -e COUCHDB_USER=${DB_ADMIN}
     -e COUCHDB_PASSWORD=${DB_PASS}
+    -e VIRTUAL_HOST=couchdb.nmrony.docker
     --name couchdb \
-    couchdb "$@"
+    couchdb
 }
