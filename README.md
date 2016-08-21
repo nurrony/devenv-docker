@@ -24,11 +24,11 @@ $sudo mkdir /nmrony && sudo mount -t vboxsf workzone /nmrony
 
 Creating VPN Networks
 ---------------------
-All configurations are depends on two custom vpn network `ronsvpn_backend` and `ronsvpn_proxy`. Create these VPNs as
+All configurations are depends on custom vpn network `ronsvpn`. Create the VPN as
 follows
 
 ```sh
-$docker network create ronsvpn_proxy
+$docker network create -d bridge ronsvpn
 $docker network create ronsvpn_backend
 ```
 Setting configuration path
@@ -41,7 +41,7 @@ export DEV_ZONE='absolute-path-to-configuration-directory'
 
 Start Containers
 -------------------
-After setting the configuration path just run the following command to start LEMP Stack
+After setting the configuration path and VPN just run the following command to start the containers
 ```
 docker-compose up -d
 ```
