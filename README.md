@@ -29,7 +29,6 @@ follows
 
 ```sh
 $docker network create -d bridge ronsvpn
-$docker network create ronsvpn_backend
 ```
 Setting configuration path
 ---------------------------
