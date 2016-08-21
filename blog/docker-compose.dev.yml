@@ -5,3 +5,8 @@ services:
     container_name: nmrony-blog
     ports:
       - 2368:2368
+    networks:
+      - ronsvpn
+networks:
+  ronsvpn:
+    external: true

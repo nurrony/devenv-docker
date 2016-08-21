@@ -4,3 +4,9 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: pma
     restart: always
+    networks:
+      - ronsvpn
+networks:
+  ronsvpn:
+    external: true
+

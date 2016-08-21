@@ -4,3 +4,9 @@ services:
     image: k0st/alpine-mariadb
     container_name: mariadb
     restart: always
+    networks:
+      - ronsvpn
+networks:
+  ronsvpn:
+    external: true
+

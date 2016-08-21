@@ -41,3 +41,6 @@ services:
     environment:
       - VIRTUAL_HOST=blog.nmrony.docker
       - DEV_DOMAIN=http://blog.nmrony.docker
+networks:
+  ronsvpn:
+    external: true

@@ -10,3 +10,9 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ${DEV_ZONE}/nginx/vhost.d:/etc/nginx/vhost.d
+    networks:
+      - ronsvpn
+networks:
+  ronsvpn:
+    external: true
+

@@ -10,11 +10,12 @@ couchdb(){
 
   docker run -it -d \
     -v ${DEV_ZONE}/storage/couchdb:/usr/local/var/lib/couchdb \
-    -p 5984:5984
-    -p 2049:2049
-    -e COUCHDB_USER=${DB_ADMIN}
-    -e COUCHDB_PASSWORD=${DB_PASS}
-    -e VIRTUAL_HOST=couchdb.nmrony.docker
+    -p 5984:5984 \
+    -p 2049:2049 \
+    -e COUCHDB_USER=${DB_ADMIN} \
+    -e COUCHDB_PASSWORD=${DB_PASS} \
+    -e VIRTUAL_HOST=couchdb.nmrony.docker \
+    --net ronsvpn \
     --name couchdb \
     couchdb
 }
