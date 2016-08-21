@@ -28,7 +28,7 @@ All configurations are depends on custom vpn network `ronsvpn`. Create the VPN a
 follows
 
 ```sh
-$docker network create -d bridge ronsvpn
+docker network create -d bridge ronsvpn
 ```
 Setting configuration path
 ---------------------------
@@ -40,7 +40,12 @@ export DEV_ZONE='absolute-path-to-configuration-directory'
 
 Start Containers
 -------------------
-After setting the configuration path and VPN just run the following command to start the containers
+After setting the configuration path and VPN just run the following command to start only **LEMP** 
+containers with proxy
+```sh
+docker-compose up -d -f docker-compose.lemp.yml
 ```
+If you want to run all containers execute following command 
+```sh
 docker-compose up -d
 ```
