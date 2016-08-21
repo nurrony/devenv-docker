@@ -1,0 +1,34 @@
+version: '2'
+services:
+  proxy:
+    extends:
+      file: ./proxy/docker-compose.yml
+      service: nginx-proxy
+  webserver:
+    extends:
+      file: ./nginx/docker-compose.yml
+      service: nginx
+    environment:
+      - VIRTUAL_HOST=experiments.nmrony.docker,nmrony.docker,itc-blog.nmrony.docker,n3k.nmrony.docker
+  php:
+    extends:
+      file: ./nginx/docker-compose.yml
+      service: php
+  pma:
+    extends:
+      file: ./pma/docker-compose.yml
+      service: pma
+    environment:
+      - VIRTUAL_HOST=pma.nmrony.docker
+      - PMA_HOSTS=mysql-dev,test_mariadb
+  mysql-dev:
+    extends:
+      file: ./mariadb/docker-compose.yml
+      service: mariadb
+    volumes:
+      - ${DEV_ZONE}/storage/mysql-common:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=nmrony
+networks:
+  ronsvpn:
+    external: true
