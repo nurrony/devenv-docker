@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 couchdb(){
+  # Removed stopped couchdb containers first
+  del_stopped couchdb
 
-  # first check couchdb container is running or not
-  local running=$(is_running nginx)
+  local state=$(is_running couchdb)
   local COUCH_DB_ADMIN=${1:-nmrony}
   local COUCH_DB_PASS=${2:-test}
-  if [ "$running" = "true" ]
-  then
-    echo 'couchdb is already running'
+  if [[ "$state" == "true" ]]; then
+    echo 'couchdb server is already running'
   else
     docker run -it -d \
       -v ${DEV_ZONE}/storage/couchdb:/usr/local/var/lib/couchdb \
