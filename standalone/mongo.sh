@@ -2,6 +2,7 @@
 
 mongodb() {
   # first check mongodb container is running or not
+  del_stopped mongo-server
   local state=$(is_running mongo-server)
 
   if [[ "$state" == "true" ]]; then
