@@ -16,3 +16,15 @@ mongodb(){
     echo 'mongodb is already running'
   fi
 }
+
+# Mongo Client Code
+mongo() {
+  # runs mongodb container if it is not already running
+  relies_on mongodb
+
+  # Sleep until mongodb server is not ready to connect
+  sleep 2s;
+
+  # Connect to mongo server
+  docker exec -it mongodb mongo
+}
