@@ -2,7 +2,7 @@ Development using Docker
 ========================
 This repository contains all my `docker`, docker-machine, docker-compose related settings and configuration files
 
-> ###If you do not like too much chit-chat and talk to hand (like me :stuck_out_tongue:) just jump to [Start Containers](#start-containers) section
+> ### If you do not like too much chit-chat and talk to hand (like me :stuck_out_tongue:) just jump to [Start Containers](#start-containers) section
 
 Creating Machine
 ----------------
