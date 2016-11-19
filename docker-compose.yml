@@ -26,7 +26,7 @@ services:
       file: ./mariadb/docker-compose.yml
       service: mariadb
     volumes:
-      - ${DEV_ZONE}/storage/mysql-common:/var/lib/mysql
+      - ${DEV_ZONE}/storage/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=nmrony
   nmrony-blog:
