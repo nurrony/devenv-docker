@@ -30,6 +30,8 @@ follows
 ```sh
 docker network create -d bridge ronsvpn
 ```
+If you do not want that just remove `net` key in docker compose file
+
 Setting configuration path
 ---------------------------
 Copy and paste the following line in your `~/.bashrc` or `~/.zshrc` depending your shell. 
