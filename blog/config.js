@@ -13,7 +13,7 @@ config = {
         database: {
             client: 'mysql',
             connection: {
-                host     : 'mysql',
+                host     : 'mariadb',
                 user     : 'root',
                 password : 'nmrony',
                 database : 'ghost_nmrony_info',
@@ -32,7 +32,7 @@ config = {
         database: {
             client: 'mysql',
             connection: {
-                host     : 'mysql',
+                host     : 'mariadb',
                 user     : 'root',
                 password : 'nmrony',
                 database : 'ghost_nmrony_info',
