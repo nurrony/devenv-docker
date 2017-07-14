@@ -34,20 +34,30 @@ If you do not want that just remove `net` key in docker compose file
 
 Setting configuration path
 ---------------------------
-Copy and paste the following line in your `~/.bashrc` or `~/.zshrc` depending your shell. 
+Copy and paste the following line in your `~/.bashrc` or `~/.zshrc` depending your shell.
 Then replace `absolute-path-to-configuration-directory` with yours
 ```sh
 export DEV_ZONE='absolute-path-to-configuration-directory'
+source $HOME/.zshrc # replace with `.bashrc` if your shell is bash
+```
+
+Then create these following commands to create necessary directories for configuration from the root of this cloned directory
+
+```sh
+mkdir -p ${DEV_ZONE}/storage/mysql
+mkdir -p ${DEV_ZONE}/projects
+mkdir -p ${DEV_ZONE}/settings
+cp -r ./nginx ${DEV_ZONE}/settings
 ```
 
 Start Containers
 -------------------
-After setting the configuration path and VPN just run the following command to start only **LEMP** 
+After setting the configuration path and VPN just run the following command to start only **LEMP**
 containers with proxy
 ```sh
 docker-compose up -d -f docker-compose.lemp.yml
 ```
-If you want to run all containers execute following command 
+If you want to run all containers execute following command
 ```sh
 docker-compose up -d
 ```
