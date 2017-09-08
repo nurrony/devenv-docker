@@ -55,7 +55,7 @@ Start Containers
 After setting the configuration path and VPN just run the following command to start only **LEMP**
 containers with proxy
 ```sh
-docker-compose up -d -f docker-compose.lemp.yml
+docker-compose -f docker-compose.lemp.yml up -d
 ```
 If you want to run all containers execute following command
 ```sh
